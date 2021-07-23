@@ -27,7 +27,12 @@ public class daysSpent {
 
         System.out.println("Enter year of birth :");
         year = enter.nextInt();
-        
+
+        while (year <1900||year>2021)
+        {
+            System.out.println("Year of birth must be not greater than 1900 or 2021 please try again :");
+            year = enter.nextInt();
+        }
         System.out.println("Enter month of birth :");
         month =enter.nextInt();
         while (month<0 ||month >12)
