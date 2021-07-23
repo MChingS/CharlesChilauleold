@@ -26,76 +26,84 @@ public class daysSpent {
         System.out.println("Enter year of birth :");
         while (enter.hasNext()){
 
-            if (enter.hasNextInt()) {
-                year = enter.nextInt();
 
+
+            if (enter.hasNextInt()) {
+
+                year = enter.nextInt();
                 while (year < 1900 || year > 2021)//only years between 1900 - 2021 allowed
                 {
-                    System.out.println("Year of birth must be not less than 1900 or 2021 please try again :");
-                    year = enter.nextInt();
+                    if (enter.hasNextInt()) {
+                    System.out.print("Year of birth must be not less than 1900 or 2021 please try again :");
+                    year = enter.nextInt();}
+                    else {
+                        System.out.print("Year of birth must be Integer only not :" + enter.next() + " try again :");
+                    }
+
+
                 }
 
-
-
-
         System.out.println("Enter month of birth :");
-        month =enter.nextInt();
-        while (month<0 ||month >12)
-        {
-            System.out.println(" Month of birth must be greater than 0 and less than 12");
-            System.out.println("Enter year of birth :");
-            month =enter.nextInt();
-        }
-        System.out.println("Enter day of birth :");
-        day =enter.nextInt();
-        if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
-        {
-            while (day<0 || day>31)
-            {
-                System.out.println("Day must be greater than 0 and less than 32 for month "+month);
-                day =enter.nextInt();
+                while (enter.hasNext()) {
+
+                    if (enter.hasNextInt()) {
+                        month = enter.nextInt();
+                        while (month < 0 || month > 12) {
+                            System.out.println(" Month of birth must be greater than 0 and less than 12");
+                            System.out.println("Enter Month of birth :");
+                            month = enter.nextInt();
+                        }
+                        System.out.println("Enter day of birth :");
+                        day = enter.nextInt();
+                        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                            while (day < 0 || day > 31) {
+                                System.out.println("Day must be greater than 0 and less than 32 for month " + month);
+                                day = enter.nextInt();
+
+                            }
+
+                        }
+                        if (month == 4 || month == 6 || month == 9 || month == 11) {
+                            while (day < 0 || day > 30) {
+                                System.out.println("Day must be greater than 0 and less than 31 for month " + month);
+                                day = enter.nextInt();
+
+                            }
+                        }
+                        if (month == 2) {
+                            while (day < 0 || day > 29) {
+                                System.out.println("Day must be greater than 0 and less than 30 for month " + month);
+                                day = enter.nextInt();
+
+                            }
+                        }
+
+
+                        String dateFormat = "dd/mm/yyyy"; //date format
+                        DateFormat form = new SimpleDateFormat(dateFormat);
+
+                        //convecting user input to date
+                        LocalDate nowDate = LocalDate.now();
+                        String temp1 = year + "/" + month + "/" + day;
+                        Date bod = form.parse(temp1);
+
+                        // days calculation and convecting
+                        Instant temp = nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+                        long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(), temp);
+
+                        //Dates output and days spent
+                        System.out.println("Today's date is :" + nowDate);
+                        System.out.println("Your year of birth is :" + temp1);
+                        System.out.println("Days lived are :" + Dayslived);
+                    } else {
+                        System.out.print("Month of birth must be Integer only not :" + enter.next() + " try again :");
+                    }
+                }
+                 }
+            else{
+                System.out.print("Year of birth must be Integer only not :" + enter.next() + " try again :");
 
             }
-
-        }
-        if(month==4||month==6||month==9||month==11)
-        {
-            while (day<0 || day>30) {
-                System.out.println("Day must be greater than 0 and less than 31 for month " + month);
-                day = enter.nextInt();
-
-            }
-        }
-        if(month==2) {
-            while (day<0 || day>29) {
-                System.out.println("Day must be greater than 0 and less than 30 for month " + month);
-                day = enter.nextInt();
-
-            }
-        }
-
-
-        String dateFormat = "dd/mm/yyyy"; //date format
-        DateFormat form = new SimpleDateFormat(dateFormat);
-
-        //convecting user input to date
-        LocalDate nowDate=LocalDate.now();
-        String temp1 = year+"/"+month+"/"+day;
-        Date bod = form.parse(temp1);
-
-        // days calculation and convecting
-        Instant temp = nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-        long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(),temp);
-
-        //Dates output and days spent
-        System.out.println("Today's date is :"+ nowDate);
-        System.out.println("Your year of birth is :"+ temp1);
-        System.out.println("Days lived are :"+ Dayslived);
-    }
-            else {
-        System.out.print("Year of birth must be Integer only not :" + enter.next()+ " try again :");
-
-    }
 }
 
     }
