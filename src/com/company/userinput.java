@@ -1,4 +1,6 @@
 package com.company;
+import jdk.nashorn.internal.ir.WhileNode;
+
 import java.util.Scanner;
 import java.lang.*;
 import java.text.DecimalFormat;
@@ -9,43 +11,60 @@ public class userinput {
 
     public void doublenumbers() {
 
-
-        double num=0,val=0;
         Scanner input = new Scanner(System.in);
+        double num=0,val=0;
+
         DecimalFormat df = new DecimalFormat("###.##");
 
+
+        //Scanner scan = new Scanner(System.in);
         System.out.print("Enter your double : ");
-        num = input.nextDouble();
+        boolean temp3 = false;
 
-        val = Double.valueOf(num);
+        while (input.hasNext()) {
+            //Print Double value
 
-        System.out.println("Your double is :" + df.format(num));
-        String temp = String.valueOf(num);
-        temp = df.format(Double.valueOf(val));
+            if (input.hasNextDouble()) {
 
-        int pos = temp.indexOf(".");
+                num = input.nextDouble();
+                val = Double.valueOf(num);
 
+                String temp = String.valueOf(num);
+                temp = df.format(Double.valueOf(val));
 
-        String num1 = temp.substring(0, pos);
+                int pos = temp.indexOf(".");
 
-        String num2 = temp.substring(pos + 1, temp.length());
-        pos = pos + 1;
-        System.out.println("Dot is in position " + pos);
-        System.out.println("First part is " + num1);
-        System.out.println("Second part is " + num2);
-        int temp1 = Integer.valueOf(num1);
-        int temp2 = Integer.valueOf(num2);
-        int sum = temp1+temp2;
+                if(pos>0)
 
-        if(temp2==temp1)
-        {
-            System.out.println("Identical");
+                    System.out.println("Your double is :" + df.format(num));
+                {String num1 = temp.substring(0, pos);
 
+                String num2 = temp.substring(pos + 1, temp.length());
+                pos = pos + 1;
+                System.out.println("Dot is in position " + pos);
+                System.out.println("First part is " + num1);
+                System.out.println("Second part is " + num2);
+                int temp1 = Integer.valueOf(num1);
+                int temp2 = Integer.valueOf(num2);
+                int sum = temp1 + temp2;
+
+                if (temp2 == temp1) {
+                    System.out.println("Identical");
+
+                } else {
+                    System.out.println("Not Identical");
+                }
+                System.out.println("The sun is :" + sum);
+                }
+            }
+            else {
+                System.out.println("Not Found Double Value: ");
+                System.out.print("Enter your double : "+input.next());
+
+            }
         }
-        else
-        {
-            System.out.println("Not Identical");
-        }
-        System.out.println("The sun is :"+sum);
-    }
+
 }
+       // input.close();
+    }
+
