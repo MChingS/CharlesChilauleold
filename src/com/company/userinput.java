@@ -9,7 +9,7 @@ import java.lang.Double;
 public class userinput {
 
 
-    public void doublenumbers() {
+    public void doublenumbers() throws Exception{
 
         Scanner input = new Scanner(System.in);
         double num=0,val=0;

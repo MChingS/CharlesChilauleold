@@ -24,13 +24,20 @@ public class daysSpent {
         System.out.println("Enter you date of in the following format Year/Month/Day");
 
         System.out.println("Enter year of birth :");
-        year = enter.nextInt();
+        while (enter.hasNext()){
 
-        while (year <1900||year>2021)//only years between 1900 - 2021 allowed
-        {
-            System.out.println("Year of birth must be not greater than 1900 or 2021 please try again :");
-            year = enter.nextInt();
-        }
+            if (enter.hasNextInt()) {
+                year = enter.nextInt();
+
+                while (year < 1900 || year > 2021)//only years between 1900 - 2021 allowed
+                {
+                    System.out.println("Year of birth must be not less than 1900 or 2021 please try again :");
+                    year = enter.nextInt();
+                }
+
+
+
+
         System.out.println("Enter month of birth :");
         month =enter.nextInt();
         while (month<0 ||month >12)
@@ -84,6 +91,12 @@ public class daysSpent {
         System.out.println("Today's date is :"+ nowDate);
         System.out.println("Your year of birth is :"+ temp1);
         System.out.println("Days lived are :"+ Dayslived);
+    }
+            else {
+        System.out.print("Year of birth must be Integer only not :" + enter.next()+ " try again :");
+
+    }
+}
 
     }
 }
