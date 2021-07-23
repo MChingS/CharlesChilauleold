@@ -29,7 +29,7 @@ public class userinput {
                 temp = df.format(Double.valueOf(val));
 
                 int pos = temp.indexOf(".");
-                System.out.println("The dot is in "+pos+"th position");
+                
                 if(pos > 0) {
                     System.out.println("Your double is :" + df.format(num));
                     {
@@ -58,8 +58,7 @@ public class userinput {
                 }
             }
             else {
-                System.out.println("Not Found Double Value: ");
-                System.out.print("Enter your double : "+input.next());
+                System.out.println("Value entered: "+input.next()+" is not a double ");
 
             }
             System.out.print("Enter your double : ");
