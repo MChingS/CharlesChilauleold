@@ -16,13 +16,9 @@ public class userinput {
 
         DecimalFormat df = new DecimalFormat("###.##");
 
-
-        //Scanner scan = new Scanner(System.in);
         System.out.print("Enter your double : ");
-        boolean temp3 = false;
 
         while (input.hasNext()) {
-            //Print Double value
 
             if (input.hasNextDouble()) {
 
@@ -62,6 +58,7 @@ public class userinput {
                 System.out.print("Enter your double : "+input.next());
 
             }
+            System.out.print("Enter your double : ");
         }
 
 }
