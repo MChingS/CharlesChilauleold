@@ -13,14 +13,15 @@ import java.util.Locale;
 import java.text.ParseException;
 
 public class daysSpent {
+    Scanner enter = new Scanner(System.in);
 
     public void days()throws Exception
     {
         int year=0;
         int month=0;
-        int day;
+        int day=0;
         boolean condition=false;
-        Scanner enter = new Scanner(System.in);
+
         System.out.println("Enter you date of in the following format Year/Month/Day");
 
         System.out.println("Enter year of birth :");
@@ -53,10 +54,21 @@ public class daysSpent {
                             System.out.println("Enter Month of birth :");
                             month = enter.nextInt();
                         }
+                        daysSpent test = new daysSpent();
                         System.out.println("Enter day of birth :");
-                        day = enter.nextInt();
+
+                        while (enter.hasNext()) {
+
+                            if (enter.hasNextDouble()) {
+
+                                day = enter.nextInt();
+
+
                         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+
+
                             while (day < 0 || day > 31) {
+
                                 System.out.println("Day must be greater than 0 and less than 32 for month " + month);
                                 day = enter.nextInt();
 
@@ -79,7 +91,8 @@ public class daysSpent {
                         }
 
 
-                        String dateFormat = "dd/mm/yyyy"; //date format
+
+                        String dateFormat = "yyyy/mm/dd"; //date format
                         DateFormat form = new SimpleDateFormat(dateFormat);
 
                         //convecting user input to date
@@ -88,13 +101,20 @@ public class daysSpent {
                         Date bod = form.parse(temp1);
 
                         // days calculation and convecting
-                        Instant temp = nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-                        long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(), temp);
+
+                        long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(), nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
                         //Dates output and days spent
                         System.out.println("Today's date is :" + nowDate);
                         System.out.println("Your year of birth is :" + temp1);
                         System.out.println("Days lived are :" + Dayslived);
+
+                            }
+                            else {
+                                System.out.println("Day must be an in :"+enter.next());
+                            }
+
+                        }
                     } else {
                         System.out.print("Month of birth must be Integer only not :" + enter.next() + " try again :");
                     }
