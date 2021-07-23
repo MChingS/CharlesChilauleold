@@ -24,8 +24,10 @@ public class daysSpent {
         boolean condition=false;
         Scanner enter = new Scanner(System.in);
         System.out.println("Enter you date of in the following format Year/Month/Day");
+
         System.out.println("Enter year of birth :");
         year = enter.nextInt();
+        
         System.out.println("Enter month of birth :");
         month =enter.nextInt();
         while (month<0 ||month >12)
@@ -58,25 +60,28 @@ public class daysSpent {
             while (day<0 || day>29) {
                 System.out.println("Day must be greater than 0 and less than 30 for month " + month);
                 day = enter.nextInt();
-                condition=true;
+
             }
         }
-        //DateFormat datefo =DateFormat.("");
 
-        //String patte = "DD/MM/YY";
-      // SimpleDateFormat datefo = new SimpleDateFormat(patte);
-        Date nowDate=new Date();
-       String temp1 = year+"-"+month+"-"+day;
-        //Date bod=new SimpleDateFormat("dd/mm/yyyy").parse(temp1);
 
-        System.out.println("Today's date is :"+ LocalDate.now());
+        String dateFormat = "dd/mm/yyyy";
+        DateFormat form = new SimpleDateFormat(dateFormat);
+
+
+        LocalDate nowDate=LocalDate.now();
+        String temp1 = year+"/"+month+"/"+day;
+        Date bod = form.parse(temp1);
+
+        Instant temp = nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+
+        long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(),temp);
+
+        System.out.println("Today's date is :"+ nowDate);
         System.out.println("Your year of birth is :"+ temp1);
-      //int numDays = ChronoUnit.DAYS.between(nowDate,bod);
-       //System.out.println("Your days spends are :"+numDays);
-        Date now = nowDate;
-        Date oldDate = Date(1).minusMinutes(10);
-        Duration duration = Duration.between(oldDate, now);
-        System.out.println("ISO-8601: " + duration);
-        System.out.println("Minutes: " + duration.toMinutes());
+        System.out.println("Days lived are :"+ Dayslived);
+
+
+
     }
 }
