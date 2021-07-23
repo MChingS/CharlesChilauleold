@@ -29,7 +29,7 @@ public class userinput {
                 temp = df.format(Double.valueOf(val));
 
                 int pos = temp.indexOf(".");
-                
+
                 if(pos > 0) {
                     System.out.println("Your double is :" + df.format(num));
                     {

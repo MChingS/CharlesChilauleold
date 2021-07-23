@@ -28,7 +28,7 @@ public class daysSpent {
         System.out.println("Enter year of birth :");
         year = enter.nextInt();
 
-        while (year <1900||year>2021)
+        while (year <1900||year>2021)//only years between 1900 - 2021 allowed
         {
             System.out.println("Year of birth must be not greater than 1900 or 2021 please try again :");
             year = enter.nextInt();
@@ -70,18 +70,19 @@ public class daysSpent {
         }
 
 
-        String dateFormat = "dd/mm/yyyy";
+        String dateFormat = "dd/mm/yyyy"; //date format
         DateFormat form = new SimpleDateFormat(dateFormat);
 
-
+        //convecting user input to date
         LocalDate nowDate=LocalDate.now();
         String temp1 = year+"/"+month+"/"+day;
         Date bod = form.parse(temp1);
 
+        // days calculation and convecting
         Instant temp = nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-
         long Dayslived = ChronoUnit.DAYS.between(bod.toInstant(),temp);
 
+        //Dates output and days spent
         System.out.println("Today's date is :"+ nowDate);
         System.out.println("Your year of birth is :"+ temp1);
         System.out.println("Days lived are :"+ Dayslived);
