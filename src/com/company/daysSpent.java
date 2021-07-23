@@ -11,8 +11,6 @@ import java.time.*;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class daysSpent {
 
@@ -86,8 +84,6 @@ public class daysSpent {
         System.out.println("Today's date is :"+ nowDate);
         System.out.println("Your year of birth is :"+ temp1);
         System.out.println("Days lived are :"+ Dayslived);
-
-
 
     }
 }

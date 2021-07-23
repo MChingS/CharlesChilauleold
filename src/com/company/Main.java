@@ -26,7 +26,7 @@ public class Main {
      }
      if (opt==2)
      {
-         //int yy=0,mm=0,ddd=0;
+
          dd.days();
      }
         if (opt==3)
